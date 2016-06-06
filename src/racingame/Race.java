@@ -5,10 +5,10 @@
  */
 package racingame;
 
-
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,15 +19,15 @@ public class Race extends javax.swing.JFrame {
     /**
      * Creates new form Race
      */
-    
-    JLabel[] playerLabel = new JLabel[34];   
-    protected int carRoll;
-    
+    JLabel[] playerLabel = new JLabel[34];
+    JLabel[] computerLabel = new JLabel[34];
+    protected int playerCarRoll;
+    protected int compCarRoll;
+
     public Race() {
-        initComponents();       
-        ImageIcon imgThisImg = new ImageIcon("car final java/redCar330.png");
-       
-        playerLabel[0] = lblPlayer0;
+        initComponents();
+
+        playerLabel[0] = lblPlayer34;
         playerLabel[1] = lblPlayer1;
         playerLabel[2] = lblPlayer2;
         playerLabel[3] = lblPlayer3;
@@ -61,14 +61,51 @@ public class Race extends javax.swing.JFrame {
         playerLabel[31] = lblPlayer31;
         playerLabel[32] = lblPlayer32;
         playerLabel[33] = lblPlayer33;
-        
-        for(int i = 0 ; i <playerLabel.length;++i)
-        {
+
+        computerLabel[0] = lblComp34;
+        computerLabel[1] = lblComp1;
+        computerLabel[2] = lblComp2;
+        computerLabel[3] = lblComp3;
+        computerLabel[4] = lblComp4;
+        computerLabel[5] = lblComp5;
+        computerLabel[6] = lblComp6;
+        computerLabel[7] = lblComp7;
+        computerLabel[8] = lblComp8;
+        computerLabel[9] = lblComp9;
+        computerLabel[10] = lblComp10;
+        computerLabel[11] = lblComp11;
+        computerLabel[12] = lblComp12;
+        computerLabel[13] = lblComp13;
+        computerLabel[14] = lblComp14;
+        computerLabel[15] = lblComp15;
+        computerLabel[16] = lblComp16;
+        computerLabel[17] = lblComp17;
+        computerLabel[18] = lblComp18;
+        computerLabel[19] = lblComp19;
+        computerLabel[20] = lblComp20;
+        computerLabel[21] = lblComp21;
+        computerLabel[22] = lblComp22;
+        computerLabel[23] = lblComp23;
+        computerLabel[24] = lblComp24;
+        computerLabel[25] = lblComp25;
+        computerLabel[26] = lblComp26;
+        computerLabel[27] = lblComp27;
+        computerLabel[28] = lblComp28;
+        computerLabel[29] = lblComp29;
+        computerLabel[30] = lblComp30;
+        computerLabel[31] = lblComp31;
+        computerLabel[32] = lblComp32;
+        computerLabel[33] = lblComp33;
+
+        for (int i = 0; i < playerLabel.length; ++i) {
             playerLabel[i].setVisible(false);
         }
-        
-        lblPlayer0.setIcon(imgThisImg);
-        lblPlayer0.setVisible(true);
+
+        for (int i = 0; i < computerLabel.length; ++i) {
+            computerLabel[i].setVisible(false);
+        }
+        lblPlayer34.setVisible(true);
+        lblComp34.setVisible(true);
     }
 
     /**
@@ -93,7 +130,7 @@ public class Race extends javax.swing.JFrame {
         lblPlayer5 = new javax.swing.JLabel();
         lblPlayer6 = new javax.swing.JLabel();
         lblPlayer8 = new javax.swing.JLabel();
-        lblPlayer0 = new javax.swing.JLabel();
+        lblPlayer34 = new javax.swing.JLabel();
         lblPlayer10 = new javax.swing.JLabel();
         lblPlayer7 = new javax.swing.JLabel();
         lblPlayer11 = new javax.swing.JLabel();
@@ -134,32 +171,29 @@ public class Race extends javax.swing.JFrame {
         lblComp11 = new javax.swing.JLabel();
         lblComp12 = new javax.swing.JLabel();
         lblComp13 = new javax.swing.JLabel();
-        lblComp14 = new javax.swing.JLabel();
         lblComp15 = new javax.swing.JLabel();
+        lblComp14 = new javax.swing.JLabel();
         lblComp16 = new javax.swing.JLabel();
         lblComp17 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         lblComp18 = new javax.swing.JLabel();
         lblComp19 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        lblComp21 = new javax.swing.JLabel();
+        lblComp20 = new javax.swing.JLabel();
+        lblComp22 = new javax.swing.JLabel();
+        lblComp23 = new javax.swing.JLabel();
+        lblComp24 = new javax.swing.JLabel();
+        lblComp25 = new javax.swing.JLabel();
+        lblComp26 = new javax.swing.JLabel();
+        lblComp27 = new javax.swing.JLabel();
+        lblComp28 = new javax.swing.JLabel();
+        lblComp29 = new javax.swing.JLabel();
+        lblComp30 = new javax.swing.JLabel();
+        lblComp31 = new javax.swing.JLabel();
+        lblComp32 = new javax.swing.JLabel();
+        lblComp33 = new javax.swing.JLabel();
+        lblComp34 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -178,7 +212,7 @@ public class Race extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(680, 290, 130, 50);
+        jButton2.setBounds(680, 180, 130, 50);
 
         jButton3.setText("New Player");
         getContentPane().add(jButton3);
@@ -220,9 +254,9 @@ public class Race extends javax.swing.JFrame {
         getContentPane().add(lblPlayer8);
         lblPlayer8.setBounds(1120, 520, 80, 55);
 
-        lblPlayer0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/redCar330.png"))); // NOI18N
-        getContentPane().add(lblPlayer0);
-        lblPlayer0.setBounds(360, 550, 90, 50);
+        lblPlayer34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/redCar330.png"))); // NOI18N
+        getContentPane().add(lblPlayer34);
+        lblPlayer34.setBounds(360, 550, 90, 50);
 
         lblPlayer10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/redCar45.png"))); // NOI18N
         getContentPane().add(lblPlayer10);
@@ -331,124 +365,153 @@ public class Race extends javax.swing.JFrame {
         lblPlayer33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/redCar330.png"))); // NOI18N
         getContentPane().add(lblPlayer33);
         lblPlayer33.setBounds(290, 510, 80, 50);
+
+        lblComp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car320.png"))); // NOI18N
         getContentPane().add(lblComp1);
-        lblComp1.setBounds(520, 700, 100, 40);
+        lblComp1.setBounds(430, 640, 90, 60);
+
+        lblComp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car340.png"))); // NOI18N
         getContentPane().add(lblComp2);
-        lblComp2.setBounds(610, 700, 100, 40);
+        lblComp2.setBounds(530, 690, 86, 46);
+
+        lblComp3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car.png"))); // NOI18N
         getContentPane().add(lblComp3);
-        lblComp3.setBounds(710, 700, 90, 40);
+        lblComp3.setBounds(620, 700, 90, 40);
+
+        lblComp4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car.png"))); // NOI18N
         getContentPane().add(lblComp4);
-        lblComp4.setBounds(800, 700, 90, 40);
+        lblComp4.setBounds(710, 700, 90, 40);
+
+        lblComp5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car.png"))); // NOI18N
         getContentPane().add(lblComp5);
-        lblComp5.setBounds(900, 690, 90, 50);
+        lblComp5.setBounds(800, 700, 90, 40);
+
+        lblComp6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car15.png"))); // NOI18N
         getContentPane().add(lblComp6);
-        lblComp6.setBounds(1000, 630, 100, 60);
+        lblComp6.setBounds(890, 690, 90, 55);
+
+        lblComp7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car25.png"))); // NOI18N
         getContentPane().add(lblComp7);
-        lblComp7.setBounds(1140, 550, 100, 60);
+        lblComp7.setBounds(1010, 630, 80, 60);
+
+        lblComp8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car25.png"))); // NOI18N
         getContentPane().add(lblComp8);
-        lblComp8.setBounds(1240, 500, 80, 60);
+        lblComp8.setBounds(1140, 550, 80, 60);
+
+        lblComp9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car25.png"))); // NOI18N
         getContentPane().add(lblComp9);
-        lblComp9.setBounds(1320, 440, 70, 60);
+        lblComp9.setBounds(1240, 490, 80, 60);
+
+        lblComp10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car45.png"))); // NOI18N
         getContentPane().add(lblComp10);
-        lblComp10.setBounds(1380, 350, 50, 80);
+        lblComp10.setBounds(1320, 430, 80, 80);
+
+        lblComp11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car80.png"))); // NOI18N
         getContentPane().add(lblComp11);
-        lblComp11.setBounds(1390, 250, 40, 80);
+        lblComp11.setBounds(1380, 350, 50, 90);
+
+        lblComp12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car90.png"))); // NOI18N
         getContentPane().add(lblComp12);
-        lblComp12.setBounds(1380, 160, 50, 80);
+        lblComp12.setBounds(1390, 260, 40, 80);
+
+        lblComp13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car110.png"))); // NOI18N
         getContentPane().add(lblComp13);
-        lblComp13.setBounds(1310, 90, 80, 70);
-        getContentPane().add(lblComp14);
-        lblComp14.setBounds(420, 640, 100, 60);
+        lblComp13.setBounds(1380, 160, 60, 80);
+
+        lblComp15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car140.png"))); // NOI18N
         getContentPane().add(lblComp15);
-        lblComp15.setBounds(1010, 140, 100, 50);
+        lblComp15.setBounds(1240, 50, 90, 60);
+
+        lblComp14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car125.png"))); // NOI18N
+        getContentPane().add(lblComp14);
+        lblComp14.setBounds(1320, 90, 80, 70);
+
+        lblComp16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
         getContentPane().add(lblComp16);
-        lblComp16.setBounds(1230, 50, 90, 50);
+        lblComp16.setBounds(1140, 50, 90, 40);
+
+        lblComp17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
         getContentPane().add(lblComp17);
-        lblComp17.setBounds(1320, 90, 80, 70);
-        getContentPane().add(lblComp18);
-        lblComp18.setBounds(1320, 90, 80, 70);
-        getContentPane().add(lblComp19);
-        lblComp19.setBounds(1320, 90, 80, 70);
-
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(1250, 70, 41, 16);
-
-        jLabel4.setText("jLabel4");
+        lblComp17.setBounds(1040, 50, 100, 40);
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(1141, 50, 80, 40);
+        jLabel4.setBounds(1000, 190, 80, 40);
 
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(1051, 56, 80, 30);
+        lblComp18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp18);
+        lblComp18.setBounds(940, 50, 100, 40);
 
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(941, 56, 100, 30);
+        lblComp19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp19);
+        lblComp19.setBounds(831, 56, 100, 30);
 
-        jLabel9.setText("jLabel9");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(830, 50, 110, 40);
+        lblComp21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp21);
+        lblComp21.setBounds(641, 60, 90, 30);
 
-        jLabel10.setText("jLabel10");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(738, 56, 90, 40);
+        lblComp20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp20);
+        lblComp20.setBounds(741, 56, 90, 30);
 
-        jLabel11.setText("jLabel11");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(648, 56, 90, 40);
+        lblComp22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp22);
+        lblComp22.setBounds(550, 56, 90, 30);
 
-        jLabel12.setText("jLabel12");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(548, 56, 90, 40);
+        lblComp23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp23);
+        lblComp23.setBounds(460, 56, 90, 40);
 
-        jLabel13.setText("jLabel13");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(458, 56, 90, 40);
+        lblComp24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp24);
+        lblComp24.setBounds(368, 56, 90, 40);
 
-        jLabel14.setText("jLabel14");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(368, 56, 90, 30);
+        lblComp25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car180.png"))); // NOI18N
+        getContentPane().add(lblComp25);
+        lblComp25.setBounds(280, 60, 90, 30);
 
-        jLabel15.setText("jLabel15");
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(278, 56, 90, 40);
+        lblComp26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car205.png"))); // NOI18N
+        getContentPane().add(lblComp26);
+        lblComp26.setBounds(180, 60, 90, 50);
 
-        jLabel16.setText("jLabel16");
-        getContentPane().add(jLabel16);
-        jLabel16.setBounds(178, 66, 90, 40);
+        lblComp27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car225.png"))); // NOI18N
+        getContentPane().add(lblComp27);
+        lblComp27.setBounds(110, 90, 80, 70);
 
-        jLabel17.setText("jLabel17");
-        getContentPane().add(jLabel17);
-        jLabel17.setBounds(110, 96, 80, 70);
+        lblComp28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car245.png"))); // NOI18N
+        getContentPane().add(lblComp28);
+        lblComp28.setBounds(70, 170, 70, 84);
 
-        jLabel18.setText("jLabel18");
-        getContentPane().add(jLabel18);
-        jLabel18.setBounds(80, 166, 48, 90);
+        lblComp29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car280.png"))); // NOI18N
+        getContentPane().add(lblComp29);
+        lblComp29.setBounds(70, 260, 40, 90);
 
-        jLabel19.setText("jLabel19");
-        getContentPane().add(jLabel19);
-        jLabel19.setBounds(70, 256, 48, 90);
+        lblComp30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car300.png"))); // NOI18N
+        getContentPane().add(lblComp30);
+        lblComp30.setBounds(70, 350, 60, 85);
 
-        jLabel20.setText("jLabel20");
-        getContentPane().add(jLabel20);
-        jLabel20.setBounds(80, 356, 48, 80);
+        lblComp31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car320.png"))); // NOI18N
+        getContentPane().add(lblComp31);
+        lblComp31.setBounds(110, 440, 80, 80);
 
-        jLabel21.setText("jLabel21");
-        getContentPane().add(jLabel21);
-        jLabel21.setBounds(108, 446, 80, 70);
+        lblComp32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car320.png"))); // NOI18N
+        getContentPane().add(lblComp32);
+        lblComp32.setBounds(190, 490, 80, 70);
 
-        jLabel22.setText("jLabel22");
-        getContentPane().add(jLabel22);
-        jLabel22.setBounds(178, 496, 90, 60);
+        lblComp33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car320.png"))); // NOI18N
+        getContentPane().add(lblComp33);
+        lblComp33.setBounds(270, 540, 90, 70);
 
-        jLabel23.setText("jLabel23");
-        getContentPane().add(jLabel23);
-        jLabel23.setBounds(270, 550, 70, 50);
+        lblComp34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/f1Car320.png"))); // NOI18N
+        getContentPane().add(lblComp34);
+        lblComp34.setBounds(330, 580, 90, 60);
 
-        jLabel24.setText("jLabel24");
-        getContentPane().add(jLabel24);
-        jLabel24.setBounds(340, 590, 80, 50);
+        jButton4.setText("Rule");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(1290, 730, 130, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/raceTrack2.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -460,17 +523,42 @@ public class Race extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        int random = (int )(Math.random() * 6 + 1);
-        carRoll += random;        
-       for(int i = 0 ; i <playerLabel.length;++i)
-        {
-            if(i == carRoll)
-            playerLabel[i].setVisible(true);
-            else
-               playerLabel[i].setVisible(false); 
+        int random = (int) (Math.random() * 6 + 1);
+        playerCarRoll += random;
+
+        int random2 = (int) (Math.random() * 6 + 1);
+        compCarRoll += random2;
+
+        for (int i = 0; i < playerLabel.length; ++i) {
+            if (i == playerCarRoll) {
+                playerLabel[i].setVisible(true);
+            } else {
+                playerLabel[i].setVisible(false);
+            }
         }
+        if (playerCarRoll >= 34) {
+            lblPlayer1.setVisible(true);
+        }
+
+        for (int i = 0; i < computerLabel.length; ++i) {
+            if (i == compCarRoll) {
+                computerLabel[i].setVisible(true);
+            } else {
+                computerLabel[i].setVisible(false);
+            }
+        }
+
+        if (compCarRoll >= 34) {
+            lblComp1.setVisible(true);
+        }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(rootPane, evt);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,9 +591,9 @@ public class Race extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Race race = new Race();
-                race.setVisible(true);                
-              // race.setLocationRelativeTo(null);
-               race.setSize(1525, 925);
+                race.setVisible(true);
+                // race.setLocationRelativeTo(null);
+                race.setSize(1525, 925);
             }
         });
     }
@@ -514,30 +602,12 @@ public class Race extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblComp1;
     private javax.swing.JLabel lblComp10;
     private javax.swing.JLabel lblComp11;
@@ -550,14 +620,28 @@ public class Race extends javax.swing.JFrame {
     private javax.swing.JLabel lblComp18;
     private javax.swing.JLabel lblComp19;
     private javax.swing.JLabel lblComp2;
+    private javax.swing.JLabel lblComp20;
+    private javax.swing.JLabel lblComp21;
+    private javax.swing.JLabel lblComp22;
+    private javax.swing.JLabel lblComp23;
+    private javax.swing.JLabel lblComp24;
+    private javax.swing.JLabel lblComp25;
+    private javax.swing.JLabel lblComp26;
+    private javax.swing.JLabel lblComp27;
+    private javax.swing.JLabel lblComp28;
+    private javax.swing.JLabel lblComp29;
     private javax.swing.JLabel lblComp3;
+    private javax.swing.JLabel lblComp30;
+    private javax.swing.JLabel lblComp31;
+    private javax.swing.JLabel lblComp32;
+    private javax.swing.JLabel lblComp33;
+    private javax.swing.JLabel lblComp34;
     private javax.swing.JLabel lblComp4;
     private javax.swing.JLabel lblComp5;
     private javax.swing.JLabel lblComp6;
     private javax.swing.JLabel lblComp7;
     private javax.swing.JLabel lblComp8;
     private javax.swing.JLabel lblComp9;
-    private javax.swing.JLabel lblPlayer0;
     private javax.swing.JLabel lblPlayer1;
     private javax.swing.JLabel lblPlayer10;
     private javax.swing.JLabel lblPlayer11;
@@ -586,6 +670,7 @@ public class Race extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayer32;
     private javax.swing.JLabel lblPlayer33;
     private javax.swing.JLabel lblPlayer33b;
+    private javax.swing.JLabel lblPlayer34;
     private javax.swing.JLabel lblPlayer4;
     private javax.swing.JLabel lblPlayer5;
     private javax.swing.JLabel lblPlayer6;
