@@ -9,11 +9,11 @@ package racingame;
  *
  * @author michael
  */
-public class RacerType1 extends Persone {
+public class RacerType2 extends Persone {
     
     private int carType;
     
-    public RacerType1(String fName, String lName, String playerNumber, int carName) {
+    public RacerType2(String fName, String lName, String playerNumber, int carType) {
         super(fName, lName, playerNumber);
         this.carType = carType;
     }
@@ -24,7 +24,7 @@ public class RacerType1 extends Persone {
 
     @Override
     public String toString() {
-        return super.toString()+" and car type " + carType+ " WIN!!!";
+       return super.toString()+" and car type " + carType+ " WIN!!!";
     }
 
     public void setCarType(int carType) {
@@ -34,34 +34,26 @@ public class RacerType1 extends Persone {
     @Override
     public int moveFoaward(int roll) {
         
-        int playerRoll = 0 ;
+        int playerRoll = 0 ; 
 
-	if (roll == 0 || roll == 1)
-	{		
-		playerRoll = 0;
+
+	if (roll >= 0 && roll <= 4)
+	{
+		playerRoll +=3;
+	
 	}
 
-	if (roll == 2 || roll == 3)
-	{	
-		playerRoll = 9;
+	if (roll == 5 || roll == 6)
+	{
+		playerRoll -=0;
 	}
 
-	if (roll == 4)
-	{		
-		playerRoll= 0 ;
+	if (roll >= 7 && roll <= 9)
+	{ 
+		playerRoll +=1;
 	}
-
-	if (roll >= 5 && roll <= 7)
-	{		
-		playerRoll += 1;
-	}
-	if (roll == 8 || roll == 9)
-	{		
-		playerRoll = 0  ;
-	}          
-            
-        return playerRoll;
         
+        return playerRoll;
     }
     
     

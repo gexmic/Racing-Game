@@ -21,9 +21,12 @@ public class Race extends javax.swing.JFrame {
      */
     JLabel[] playerLabel = new JLabel[34];
     JLabel[] computerLabel = new JLabel[34];
+    Persone player;
+    Persone Computer;
+
     protected int playerCarRoll;
     protected int compCarRoll;
-
+    boolean win = false;
     public Race() {
         initComponents();
 
@@ -97,15 +100,8 @@ public class Race extends javax.swing.JFrame {
         computerLabel[32] = lblComp32;
         computerLabel[33] = lblComp33;
 
-        for (int i = 0; i < playerLabel.length; ++i) {
-            playerLabel[i].setVisible(false);
-        }
+        innitialGame();
 
-        for (int i = 0; i < computerLabel.length; ++i) {
-            computerLabel[i].setVisible(false);
-        }
-        lblPlayer34.setVisible(true);
-        lblComp34.setVisible(true);
     }
 
     /**
@@ -117,10 +113,11 @@ public class Race extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         lblPlayer33b = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnExistingPlayer = new javax.swing.JButton();
+        btnRollGo = new javax.swing.JButton();
+        btnNewPlayer = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -193,7 +190,19 @@ public class Race extends javax.swing.JFrame {
         lblComp32 = new javax.swing.JLabel();
         lblComp33 = new javax.swing.JLabel();
         lblComp34 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnRule = new javax.swing.JButton();
+        lblFirstName = new javax.swing.JLabel();
+        lblLastName = new javax.swing.JLabel();
+        lblCarType = new javax.swing.JLabel();
+        lblCarNumber = new javax.swing.JLabel();
+        rbtnType1 = new javax.swing.JRadioButton();
+        rbtnType2 = new javax.swing.JRadioButton();
+        txtFirstName = new javax.swing.JTextField();
+        txtLastName = new javax.swing.JTextField();
+        txtCarNumber = new javax.swing.JTextField();
+        btnAddPlayer = new javax.swing.JButton();
+        lblWiner = new javax.swing.JLabel();
+        btnNewGame = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -201,22 +210,27 @@ public class Race extends javax.swing.JFrame {
         getContentPane().add(lblPlayer33b);
         lblPlayer33b.setBounds(290, 510, 90, 0);
 
-        jButton1.setText("Existing Player");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(1290, 630, 130, 50);
+        btnExistingPlayer.setText("Existing Player");
+        getContentPane().add(btnExistingPlayer);
+        btnExistingPlayer.setBounds(1340, 560, 130, 50);
 
-        jButton2.setText("Roll to Go");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRollGo.setText("Roll to Go");
+        btnRollGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRollGoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(680, 180, 130, 50);
+        getContentPane().add(btnRollGo);
+        btnRollGo.setBounds(680, 180, 130, 50);
 
-        jButton3.setText("New Player");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(1290, 680, 130, 50);
+        btnNewPlayer.setText("New Player");
+        btnNewPlayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewPlayerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNewPlayer);
+        btnNewPlayer.setBounds(1340, 610, 130, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/Go_FAS_Racing.png"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -504,14 +518,72 @@ public class Race extends javax.swing.JFrame {
         getContentPane().add(lblComp34);
         lblComp34.setBounds(330, 580, 90, 60);
 
-        jButton4.setText("Rule");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnRule.setText("Rule");
+        btnRule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnRuleActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(1290, 730, 130, 40);
+        getContentPane().add(btnRule);
+        btnRule.setBounds(30, 600, 130, 40);
+
+        lblFirstName.setText("First Name");
+        getContentPane().add(lblFirstName);
+        lblFirstName.setBounds(1180, 680, 80, 20);
+
+        lblLastName.setText("Last Name");
+        getContentPane().add(lblLastName);
+        lblLastName.setBounds(1180, 710, 80, 20);
+
+        lblCarType.setText("Car Type");
+        getContentPane().add(lblCarType);
+        lblCarType.setBounds(1180, 770, 70, 20);
+
+        lblCarNumber.setText("Car Number");
+        getContentPane().add(lblCarNumber);
+        lblCarNumber.setBounds(1180, 740, 80, 20);
+
+        buttonGroup1.add(rbtnType1);
+        rbtnType1.setText("type 1");
+        getContentPane().add(rbtnType1);
+        rbtnType1.setBounds(1260, 770, 90, 20);
+
+        buttonGroup1.add(rbtnType2);
+        rbtnType2.setText("type 2");
+        getContentPane().add(rbtnType2);
+        rbtnType2.setBounds(1360, 770, 90, 20);
+        getContentPane().add(txtFirstName);
+        txtFirstName.setBounds(1260, 680, 190, 30);
+
+        txtLastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLastNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtLastName);
+        txtLastName.setBounds(1260, 710, 190, 30);
+        getContentPane().add(txtCarNumber);
+        txtCarNumber.setBounds(1260, 740, 190, 30);
+
+        btnAddPlayer.setText("Add Player");
+        btnAddPlayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddPlayerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAddPlayer);
+        btnAddPlayer.setBounds(1310, 800, 100, 32);
+        getContentPane().add(lblWiner);
+        lblWiner.setBounds(480, 780, 560, 90);
+
+        btnNewGame.setText("New Game");
+        btnNewGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewGameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNewGame);
+        btnNewGame.setBounds(680, 240, 130, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/racingame/media/raceTrack2.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -521,45 +593,136 @@ public class Race extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        int random = (int) (Math.random() * 6 + 1);
-        playerCarRoll += random;
+    private void btnRollGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollGoActionPerformed
+        // TODO add your handling code here:       
 
-        int random2 = (int) (Math.random() * 6 + 1);
-        compCarRoll += random2;
-
-        for (int i = 0; i < playerLabel.length; ++i) {
-            if (i == playerCarRoll) {
-                playerLabel[i].setVisible(true);
-            } else {
-                playerLabel[i].setVisible(false);
-            }
+        if (win==true) {
+            return;
         }
-        if (playerCarRoll >= 34) {
-            lblPlayer1.setVisible(true);
+
+            int random1 = (int) (Math.random() * 10 + 1);
+            playerCarRoll += player.moveFoaward(random1);
+
+            int random2 = (int) (Math.random() * 10 + 1);
+            compCarRoll += Computer.moveFoaward(random2);
+
+            for (int i = 0; i < playerLabel.length; ++i) {
+                if (i == playerCarRoll) {
+                    playerLabel[i].setVisible(true);
+                } else {
+                    playerLabel[i].setVisible(false);
+                }
+            }
+            if (playerCarRoll >= 34) {
+                lblWiner.setText(player.toString());
+                lblPlayer1.setVisible(true);
+                win = true;
+                btnNewGame.setVisible(true);
+            }
+
+            for (int i = 0; i < computerLabel.length; ++i) {
+                if (i == compCarRoll) {
+                    computerLabel[i].setVisible(true);
+                } else {
+                    computerLabel[i].setVisible(false);
+                }
+            }
+
+            if (compCarRoll >= 34) {
+                lblWiner.setText(Computer.toString());
+                lblComp1.setVisible(true);
+                win = true;
+                btnNewGame.setVisible(true);
+            }
+        
+
+
+    }//GEN-LAST:event_btnRollGoActionPerformed
+
+    private void btnRuleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuleActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(rootPane, evt);
+    }//GEN-LAST:event_btnRuleActionPerformed
+
+    private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLastNameActionPerformed
+
+    private void btnNewPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPlayerActionPerformed
+        // TODO add your handling code here:
+        lblFirstName.setVisible(true);
+        txtFirstName.setVisible(true);
+        lblLastName.setVisible(true);
+        txtLastName.setVisible(true);
+        lblCarNumber.setVisible(true);
+        txtCarNumber.setVisible(true);
+        lblCarType.setVisible(true);
+        rbtnType1.setVisible(true);
+        rbtnType2.setVisible(true);
+        btnAddPlayer.setVisible(true);
+    }//GEN-LAST:event_btnNewPlayerActionPerformed
+
+    private void btnAddPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPlayerActionPerformed
+        // TODO add your handling code here:
+        btnRollGo.setEnabled(true);
+        if (rbtnType1.isSelected()) {
+            String playerFName = txtFirstName.getText();
+            String playerLName = txtLastName.getText();
+            String playerCarNumber = txtCarNumber.getText();
+
+            RacerType1 playerRacer = new RacerType1(playerFName, playerLName, playerCarNumber, 1);
+            player = playerRacer;
+        }
+        if (rbtnType2.isSelected()) {
+            String playerFName = txtFirstName.getText();
+            String playerLName = txtLastName.getText();
+            String playerCarNumber = txtCarNumber.getText();
+
+            RacerType1 playerRacer = new RacerType1(playerFName, playerLName, playerCarNumber, 1);
+            player = playerRacer;
+        }
+        int computerRandomType = (int) (Math.random() * 2 + 1);
+        if (computerRandomType == 1) {
+            RacerType1 ComputerRacer = new RacerType1("Computer", "comp", "22", 1);
+            Computer = ComputerRacer;
+        }
+        if (computerRandomType == 2) {
+            RacerType1 ComputerRacer = new RacerType1("Computer", "comp", "22", 1);
+            Computer = ComputerRacer;
+        }
+
+    }//GEN-LAST:event_btnAddPlayerActionPerformed
+
+    private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
+        // TODO add your handling code here:
+        innitialGame();
+    }//GEN-LAST:event_btnNewGameActionPerformed
+
+    private void innitialGame(){
+        
+         for (int i = 0; i < playerLabel.length; ++i) {
+            playerLabel[i].setVisible(false);
         }
 
         for (int i = 0; i < computerLabel.length; ++i) {
-            if (i == compCarRoll) {
-                computerLabel[i].setVisible(true);
-            } else {
-                computerLabel[i].setVisible(false);
-            }
+            computerLabel[i].setVisible(false);
         }
-
-        if (compCarRoll >= 34) {
-            lblComp1.setVisible(true);
-        }
-
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(rootPane, evt);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+        lblPlayer34.setVisible(true);
+        lblComp34.setVisible(true);
+        lblFirstName.setVisible(false);
+        txtFirstName.setVisible(false);
+        lblLastName.setVisible(false);
+        txtLastName.setVisible(false);
+        lblCarNumber.setVisible(false);
+        txtCarNumber.setVisible(false);
+        lblCarType.setVisible(false);
+        rbtnType1.setVisible(false);
+        rbtnType2.setVisible(false);
+        btnAddPlayer.setVisible(false);
+        btnRollGo.setEnabled(false);
+        btnNewGame.setVisible(false);
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -599,15 +762,20 @@ public class Race extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAddPlayer;
+    private javax.swing.JButton btnExistingPlayer;
+    private javax.swing.JButton btnNewGame;
+    private javax.swing.JButton btnNewPlayer;
+    private javax.swing.JButton btnRollGo;
+    private javax.swing.JButton btnRule;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblCarNumber;
+    private javax.swing.JLabel lblCarType;
     private javax.swing.JLabel lblComp1;
     private javax.swing.JLabel lblComp10;
     private javax.swing.JLabel lblComp11;
@@ -642,6 +810,8 @@ public class Race extends javax.swing.JFrame {
     private javax.swing.JLabel lblComp7;
     private javax.swing.JLabel lblComp8;
     private javax.swing.JLabel lblComp9;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblPlayer1;
     private javax.swing.JLabel lblPlayer10;
     private javax.swing.JLabel lblPlayer11;
@@ -677,5 +847,11 @@ public class Race extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayer7;
     private javax.swing.JLabel lblPlayer8;
     private javax.swing.JLabel lblPlayer9;
+    private javax.swing.JLabel lblWiner;
+    private javax.swing.JRadioButton rbtnType1;
+    private javax.swing.JRadioButton rbtnType2;
+    private javax.swing.JTextField txtCarNumber;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtLastName;
     // End of variables declaration//GEN-END:variables
 }
